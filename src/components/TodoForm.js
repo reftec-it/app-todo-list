@@ -3,6 +3,8 @@ import Button from './ui/button';
 import { faFileCirclePlus } from '@fortawesome/free-solid-svg-icons';
 
 export default function TodoForm() {
+  const [value, setValue] = useState("");
+
   const handleClick = () => {
     alert('Hello World!');
   };
@@ -19,7 +21,7 @@ export default function TodoForm() {
         <div className='w-full flex items-start justify-end'>
           <Button
             fontIcon={faFileCirclePlus}
-            text='Add Note'
+            text='Add ToDo'
             iconSize='md'
             clickEvent={handleClick}
             type='submit'

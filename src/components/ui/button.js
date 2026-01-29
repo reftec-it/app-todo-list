@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Button({
     type = 'button',
-    text = 'Button',
+    text,
     title,
     fontIcon,
     iconSize,
