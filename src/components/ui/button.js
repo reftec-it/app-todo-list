@@ -1,4 +1,5 @@
-import React from 'react';
+import { React, useRef } from 'react';
+import { animate } from 'animejs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Button({
@@ -7,8 +8,10 @@ export default function Button({
     title,
     fontIcon,
     iconSize,
-    clickEvent,
+    onClick,
     context,
+    cursorClass = 'cursor-pointer',
+    className,
 }) {
     const contextClasses = {
         primary: 'bg-orange-500 hover:bg-orange-600 active:bg-orange-700',
@@ -16,7 +19,18 @@ export default function Button({
         default: 'bg-gray-50 hover:bg-gray-100 active:bg-gray-200',
     };
 
-    let btnContextDesign = 'cursor-pointer px-4 py-2 rounded-lg flex gap-2 items-center justify-center font-medium transition-colors';
+    const btnRef = useRef(null);
+
+    const handleClick = (e) => {
+        animate(btnRef.current, {
+            scale: [1, 0.85, 1],
+            duration: 250,
+            easing: 'easeInOutQuad'
+        })
+        onClick?.(e);
+    }
+
+    let btnContextDesign = `${text ? 'px-4 py-2' : 'px-2 py-2'} ${cursorClass ?? ''} ${className ?? ''} rounded-lg flex gap-2 items-center justify-center font-medium transition-colors`;
 
     switch (context) {
         case 'primary':
@@ -32,10 +46,11 @@ export default function Button({
 
     return (
         <button
+            ref={btnRef}
             type={type}
             title={title}
             className={context && btnContextDesign}
-            onClick={clickEvent || undefined}
+            onClick={handleClick}
         >
             {fontIcon && (
                 <FontAwesomeIcon

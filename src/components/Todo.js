@@ -1,4 +1,4 @@
-import React from 'react'
+import storage  from './../scripts/storage';
 
 export const sampleTodoListData = [
   { id: 'todo_id-1', title: 'Hello World!', completed: false },
@@ -8,6 +8,14 @@ export const sampleTodoListData = [
   { id: 'todo_id-5', title: 'To Do 2', completed: true },
 ];
 
-export default function Todo() {
-  return null;
-}
+// console.log(storage.getAll());
+// console.log(storage.getLength());
+// console.log(storage.getAllActive());
+// console.log(storage.getAllCompleted());
+
+const Todo = {
+  // addTodo : storage.addTodo,
+  storage: storage
+};
+
+export default Todo;
