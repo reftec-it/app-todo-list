@@ -8,7 +8,9 @@ export default function Active(TodoData) {
     <div className='space-y-2'>
       {
         Object.values(activeTodos).map((todo, index) => (
-          <TodoCard data={todo} />
+          <div key={todo.id}>
+            <TodoCard data={todo} />
+          </div>
         ))
       }
     </div>

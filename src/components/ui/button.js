@@ -12,6 +12,7 @@ export default function Button({
     context,
     cursorClass = 'cursor-pointer',
     className,
+    iconColor,
 }) {
     const contextClasses = {
         primary: 'bg-orange-500 hover:bg-orange-600 active:bg-orange-700',
@@ -56,6 +57,7 @@ export default function Button({
                 <FontAwesomeIcon
                     icon={fontIcon}
                     size={iconSize ?? undefined}
+                    color={iconColor ?? undefined}
                 />
             )}
             {text}

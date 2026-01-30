@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from './button';
-import { faSquareFull } from '@fortawesome/free-regular-svg-icons';
+import { faSquareFull, faTrashCan } from '@fortawesome/free-regular-svg-icons';
 
 export default function TodoCard({data}) {
     return (
@@ -9,8 +9,9 @@ export default function TodoCard({data}) {
                 <p className='text-start text-wrap cursor-default'>{data.title}</p>
             </div>
 
-            <div className='min-w-[100px] flex items-start justify-end'>
-                {!data.completed && <Button fontIcon={faSquareFull} iconSize='lg' title='Check todo' />}
+            <div className='min-w-[100px] flex items-start justify-end gap-2'>
+                {!data.completed && <Button fontIcon={faSquareFull} iconSize='md' title='Complete task' />}
+                {!data.completed && <Button fontIcon={faTrashCan} iconColor='#D30000' iconSize='md' title='Remove task' />}
             </div>
         </div>
     );
